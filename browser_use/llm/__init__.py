@@ -35,6 +35,7 @@ if TYPE_CHECKING:
 	from browser_use.llm.deepseek.chat import ChatDeepSeek
 	from browser_use.llm.google.chat import ChatGoogle
 	from browser_use.llm.groq.chat import ChatGroq
+	from browser_use.llm.litellm_chat import ChatLiteLLM
 	from browser_use.llm.mistral.chat import ChatMistral
 	from browser_use.llm.oci_raw.chat import ChatOCIRaw
 	from browser_use.llm.ollama.chat import ChatOllama
@@ -88,6 +89,7 @@ _LAZY_IMPORTS = {
 	'ChatDeepSeek': ('browser_use.llm.deepseek.chat', 'ChatDeepSeek'),
 	'ChatGoogle': ('browser_use.llm.google.chat', 'ChatGoogle'),
 	'ChatGroq': ('browser_use.llm.groq.chat', 'ChatGroq'),
+	'ChatLiteLLM': ('browser_use.llm.litellm_chat', 'ChatLiteLLM'),
 	'ChatMistral': ('browser_use.llm.mistral.chat', 'ChatMistral'),
 	'ChatOCIRaw': ('browser_use.llm.oci_raw.chat', 'ChatOCIRaw'),
 	'ChatOllama': ('browser_use.llm.ollama.chat', 'ChatOllama'),
@@ -143,6 +145,7 @@ __all__ = [
 	'ContentImage',
 	# Chat models
 	'BaseChatModel',
+	'ChatLiteLLM',  # Unified LiteLLM adapter (recommended)
 	'ChatOpenAI',
 	'ChatBrowserUse',
 	'ChatDeepSeek',

@@ -21,13 +21,11 @@ class SystemPrompt:
 		extend_system_message: str | None = None,
 		use_thinking: bool = True,
 		flash_mode: bool = False,
-		is_anthropic: bool = False,
 		is_browser_use_model: bool = False,
 	):
 		self.max_actions_per_step = max_actions_per_step
 		self.use_thinking = use_thinking
 		self.flash_mode = flash_mode
-		self.is_anthropic = is_anthropic
 		self.is_browser_use_model = is_browser_use_model
 		prompt = ''
 		if override_system_message is not None:
@@ -53,9 +51,9 @@ class SystemPrompt:
 					template_filename = 'system_prompt_browser_use.md'
 				else:
 					template_filename = 'system_prompt_browser_use_no_thinking.md'
-			elif self.flash_mode and self.is_anthropic:
-				template_filename = 'system_prompt_flash_anthropic.md'
 			elif self.flash_mode:
+				# Use unified flash prompt for all providers (including Anthropic)
+				# LiteLLM handles provider-specific formatting automatically
 				template_filename = 'system_prompt_flash.md'
 			elif self.use_thinking:
 				template_filename = 'system_prompt.md'

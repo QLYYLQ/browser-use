@@ -447,16 +447,13 @@ class Agent(Generic[Context, AgentStructuredOutput]):
 		# Store llm_screenshot_size in browser_session so tools can access it
 		self.browser_session.llm_screenshot_size = llm_screenshot_size
 
-		# Check if LLM is ChatAnthropic instance
-		from browser_use.llm.anthropic.chat import ChatAnthropic
-
-		is_anthropic = isinstance(self.llm, ChatAnthropic)
-
 		# Check if model is a browser-use fine-tuned model (uses simplified prompts)
 		is_browser_use_model = 'browser-use/' in self.llm.model.lower()
 
 		# Initialize message manager with state
 		# Initial system prompt with all actions - will be updated during each step
+		# Note: With LiteLLM, provider-specific prompt adjustments are no longer needed
+		# as LiteLLM handles message format conversion automatically
 		self._message_manager = MessageManager(
 			task=self.task,
 			system_message=SystemPrompt(
@@ -465,7 +462,6 @@ class Agent(Generic[Context, AgentStructuredOutput]):
 				extend_system_message=extend_system_message,
 				use_thinking=self.settings.use_thinking,
 				flash_mode=self.settings.flash_mode,
-				is_anthropic=is_anthropic,
 				is_browser_use_model=is_browser_use_model,
 			).get_system_message(),
 			file_system=self.file_system,

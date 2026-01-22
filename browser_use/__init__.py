@@ -60,6 +60,7 @@ if TYPE_CHECKING:
 	from browser_use.llm.browser_use.chat import ChatBrowserUse
 	from browser_use.llm.google.chat import ChatGoogle
 	from browser_use.llm.groq.chat import ChatGroq
+	from browser_use.llm.litellm_chat import ChatLiteLLM
 	from browser_use.llm.mistral.chat import ChatMistral
 	from browser_use.llm.oci_raw.chat import ChatOCIRaw
 	from browser_use.llm.ollama.chat import ChatOllama
@@ -90,6 +91,7 @@ _LAZY_IMPORTS = {
 	# DOM service (moderate weight)
 	'DomService': ('browser_use.dom.service', 'DomService'),
 	# Chat models (very heavy imports)
+	'ChatLiteLLM': ('browser_use.llm.litellm_chat', 'ChatLiteLLM'),  # Unified LiteLLM adapter (recommended)
 	'ChatOpenAI': ('browser_use.llm.openai.chat', 'ChatOpenAI'),
 	'ChatGoogle': ('browser_use.llm.google.chat', 'ChatGoogle'),
 	'ChatAnthropic': ('browser_use.llm.anthropic.chat', 'ChatAnthropic'),
@@ -143,6 +145,7 @@ __all__ = [
 	'ActionModel',
 	'AgentHistoryList',
 	# Chat models
+	'ChatLiteLLM',  # Unified LiteLLM adapter (recommended)
 	'ChatOpenAI',
 	'ChatGoogle',
 	'ChatAnthropic',

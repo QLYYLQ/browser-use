@@ -30,6 +30,9 @@ dependencies = [
     "typing-extensions>=4.12.2",
     "uuid7>=0.1.0",
     "authlib>=1.6.0",
+    # LiteLLM: Unified LLM interface (recommended, replaces individual provider packages)
+    "litellm>=1.50.0",
+    # Legacy provider packages (kept for backward compatibility, can be removed when fully migrated to LiteLLM)
     "google-genai>=1.50.0,<2.0.0",
     "openai>=2.7.2,<3.0.0",
     "anthropic>=0.72.1,<1.0.0",
